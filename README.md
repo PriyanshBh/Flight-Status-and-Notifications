@@ -33,7 +33,8 @@ The Flight Status & Notifications App is a full-stack application designed to pr
 To run this application locally, follow these steps:
 
 1. **Clone the Repository**
-
+    https://github.com/PriyanshBh/Flight-Status-and-Notifications.git
+   
    Setup the Backend
 
 Navigate to the backend directory:
