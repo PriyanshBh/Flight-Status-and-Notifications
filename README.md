@@ -22,16 +22,16 @@ Install dependencies
 ```bash
 npm install
 ```
-Create a .env file in the backend directory and add your environment variables. Use the provided .env sample:
+Create a .env file in the backend directory and add your environment variables. Use the provided '.env sample' :
 ```bash
-# MongoDB URI
+// # MongoDB URI
 MONGO_URI=mongodb://localhost:27017/your_database_name
 
-# Gmail SMTP Credentials
+// # Gmail SMTP Credentials
 EMAIL_USER=your_gmail_email@gmail.com
 EMAIL_PASS=your_gmail_app_password
 
-# Twilio Credentials
+// # Twilio Credentials
 TWILIO_ACCOUNT_SID=your_twilio_account_sid
 TWILIO_AUTH_TOKEN=your_twilio_auth_token
 TWILIO_PHONE_NUMBER=your_twilio_phone_number
