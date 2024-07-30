@@ -1,4 +1,3 @@
-// server.js
 require('dotenv').config(); // Load environment variables from .env file
 
 const express = require('express'); // Import Express for server setup
@@ -6,7 +5,7 @@ const cors = require('cors'); // Import CORS middleware for cross-origin request
 const bodyParser = require('body-parser'); // Import Body-Parser to parse JSON request bodies
 const nodemailer = require('nodemailer'); // Import Nodemailer for sending emails
 const twilio = require('twilio'); // Import Twilio for sending SMS
-const Flight = require('./config/db'); // Correct path
+const { Flight, connectToDatabase } = require('./config/db'); // Import the Flight model and connect function
 
 const app = express(); // Create an Express application
 const port = process.env.PORT || 5000; // Set the port from environment variable or default to 5000
@@ -75,23 +74,9 @@ app.post('/api/notify/sms', async (req, res) => {
   }
 });
 
-// Populate the database with mock data
-app.post('/api/populate', async (req, res) => {
-  const mockFlights = [
-    { flightNumber: 'AA123', status: 'On Time', gate: 'A1', departureTime: new Date(), arrivalTime: new Date() },
-    { flightNumber: 'BA456', status: 'Delayed', gate: 'B2', departureTime: new Date(), arrivalTime: new Date() },
-    { flightNumber: 'CA789', status: 'Cancelled', gate: 'C3', departureTime: new Date(), arrivalTime: new Date() }
-  ];
-
-  try {
-    await Flight.deleteMany(); // Clear existing flights from the database
-    await Flight.insertMany(mockFlights); // Insert mock flight data
-    res.status(200).json({ message: 'Database populated successfully' }); // Send success response
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to populate database' }); // Send error message if database population fails
-  }
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`); // Log server start message
+// Connect to the database and start the server
+connectToDatabase().then(() => {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`); // Log server start message
+  });
 });
