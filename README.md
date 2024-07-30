@@ -1,4 +1,8 @@
-# Flight Status and Notifications
+# Flight Status and Notifications/Indigo Hack to Hire
+
+Flight Status and Notifications
+Description: Develop a system to provide real-time flight status updates and notifications to
+passengers.
 
 ## Getting Started
 
